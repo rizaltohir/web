@@ -18,11 +18,48 @@ class Project extends Model
         'title',
         'description',
         'location',
-        'status', // Pastikan status juga ada di sini jika Anda menggunakannya
+        'category',
+        'tags',
+        'status',
+        'start_date',
+        'end_date',
         'goal_amount',
-        'user_id', // <-- PENTING
-        'latitude',   // <-- Tambahkan ini
-        'longitude',  // <-- Tambahkan ini
+        'user_id',
+        'latitude',
+        'longitude',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'tags' => 'array',
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
+
+    /**
+     * Daftar kategori yang tersedia
+     */
+    public static $categories = [
+        'environment' => 'Lingkungan',
+        'social' => 'Sosial',
+        'education' => 'Pendidikan',
+        'health' => 'Kesehatan',
+        'culture' => 'Budaya',
+        'technology' => 'Teknologi',
+        'other' => 'Lainnya'
+    ];
+
+    /**
+     * Daftar status yang tersedia
+     */
+    public static $statuses = [
+        'preparation' => 'Persiapan',
+        'ongoing' => 'Sedang Berjalan',
+        'completed' => 'Selesai'
     ];
 
     /**

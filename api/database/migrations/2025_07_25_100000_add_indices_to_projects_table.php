@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Tambahkan kolom user_id setelah kolom 'id'
-            // constrained() akan otomatis membuat foreign key ke tabel 'users'
-            // cascadeOnDelete() berarti jika seorang user dihapus, semua proyeknya juga akan terhapus.
-            $table->foreignId('user_id')->after('id')->constrained()->cascadeOnDelete();
+            $table->index('category');
+            $table->index('status');
+            $table->index('start_date');
+            $table->index('end_date');
         });
     }
 
@@ -25,9 +25,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Hapus foreign key dan kolomnya
-            $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
+            $table->dropIndex(['category']);
+            $table->dropIndex(['status']);
+            $table->dropIndex(['start_date']);
+            $table->dropIndex(['end_date']);
         });
     }
 };

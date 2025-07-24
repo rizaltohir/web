@@ -18,13 +18,27 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
+            'category'    => 'required|string|in:environment,social,education,health,culture,technology,other',
+            'tags'        => 'nullable|array',
+            'tags.*'      => 'string|max:50',
             'location'    => 'required|string|max:255',
-            'latitude'    => 'required|numeric|between:-90,90', // Validasi untuk latitude
-            'longitude'   => 'required|numeric|between:-180,180', // Validasi untuk longitude
+            'latitude'    => 'required|numeric|between:-90,90',
+            'longitude'   => 'required|numeric|between:-180,180',
+            'status'      => 'required|string|in:preparation,ongoing,completed',
+            'start_date'  => 'required|date',
+            'end_date'    => 'required|date|after_or_equal:start_date',
             'goal_amount' => 'nullable|numeric|min:0',
         ]);
 
+                // Tambahkan user_id ke data yang akan disimpan
         $validatedData['user_id'] = $request->user()->id;
+        
+        // Convert tags array to JSON string if present
+        if (isset($validatedData['tags'])) {
+            $validatedData['tags'] = json_encode($validatedData['tags']);
+        }
+
+        // Simpan project baru
         $project = Project::create($validatedData);
 
         return response()->json(['message' => 'Proyek berhasil dibuat!', 'data' => $project], 201);
@@ -44,11 +58,22 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'title'       => 'required|string|max:255',
             'description' => 'required|string',
+            'category'    => 'required|string|in:environment,social,education,health,culture,technology,other',
+            'tags'        => 'nullable|array',
+            'tags.*'      => 'string|max:50',
             'location'    => 'required|string|max:255',
             'latitude'    => 'required|numeric|between:-90,90',
             'longitude'   => 'required|numeric|between:-180,180',
+            'status'      => 'required|string|in:preparation,ongoing,completed',
+            'start_date'  => 'required|date',
+            'end_date'    => 'required|date|after_or_equal:start_date',
             'goal_amount' => 'nullable|numeric|min:0',
         ]);
+
+        // Convert tags array to JSON string if present
+        if (isset($validatedData['tags'])) {
+            $validatedData['tags'] = json_encode($validatedData['tags']);
+        }
 
         $project->update($validatedData);
 

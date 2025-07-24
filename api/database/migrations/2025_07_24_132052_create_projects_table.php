@@ -20,11 +20,18 @@ return new class extends Migration
             // INI ADALAH KOLOM-KOLOM YANG KITA TAMBAHKAN
             // ==================================================
 
-            $table->string('title'); // Kolom untuk judul proyek (tipe data VARCHAR)
-            $table->text('description'); // Kolom untuk deskripsi panjang (tipe data TEXT)
-            $table->string('location'); // Kolom untuk lokasi (misal: "Sleman, Yogyakarta")
-            $table->string('status')->default('pending'); // Kolom status (misal: pending, active, completed)
-            $table->decimal('goal_amount', 15, 2)->nullable(); // Kolom target donasi (bisa kosong)
+            $table->string('title');
+            $table->text('description');
+            $table->string('location');
+            $table->string('category')->default('other');
+            $table->json('tags')->nullable();
+            $table->string('status')->default('preparation');
+            $table->date('start_date')->default(now());
+            $table->date('end_date')->default(now()->addDays(30));
+            $table->decimal('goal_amount', 15, 2)->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
