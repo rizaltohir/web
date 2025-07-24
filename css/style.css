@@ -1,0 +1,44 @@
+body {
+    background-color: #f0f4f8;
+    font-family: sans-serif;
+    color: #333333;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Menengahkan gambar dan judul utama */
+img, h1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Memberi gaya pada judul utama (h1) */
+h1 {
+    color: #2c5e32; /* Warna hijau tua yang terinspirasi dari alam */
+}
+
+/* Memberi gaya pada sub-judul (h2) */
+h2 {
+    color: #4a7c59; /* Warna hijau yang sedikit lebih muda */
+    border-bottom: 2px solid #e0e0e0; /* Garis bawah tipis untuk pemisah */
+    padding-bottom: 5px; /* Jarak antara teks dan garis bawah */
+}
+
+/* Memberi gaya pada tautan (a) */
+a {
+    color: #3a86ff; /* Warna biru cerah agar menonjol */
+    text-decoration: none; /* Menghilangkan garis bawah default */
+}
+
+a:hover {
+    text-decoration: underline; /* Memunculkan garis bawah saat mouse di atasnya */
+}
