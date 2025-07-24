@@ -21,10 +21,28 @@
                 <label for="description">Deskripsi Lengkap</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
             </div>
+            
+            <hr>
+            <h3>Detail Lokasi</h3>
             <div class="form-group">
-                <label for="location">Lokasi (Contoh: Sleman, Yogyakarta)</label>
+                <label for="location">Alamat atau Nama Lokasi (Contoh: Tugu Yogyakarta)</label>
                 <input type="text" id="location" name="location" required>
             </div>
+            <button type="button" id="geocode-button" class="button-secondary">Cari Koordinat dari Alamat</button>
+            <div id="geocode-status" style="margin-top: 10px; font-style: italic;"></div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" id="latitude" name="latitude" readonly required placeholder="Akan terisi otomatis">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" id="longitude" name="longitude" readonly required placeholder="Akan terisi otomatis">
+                </div>
+            </div>
+            <hr>
+
             <div class="form-group">
                 <label for="goal_amount">Target Donasi (jika ada, isi dengan angka saja)</label>
                 <input type="number" id="goal_amount" name="goal_amount" placeholder="Contoh: 5000000">
@@ -35,7 +53,6 @@
         <div id="message-container" style="margin-top: 20px;"></div>
     </div>
 
-    <!-- PENTING: auth.js harus dimuat SEBELUM tambah.js -->
     <script src="js/auth.js"></script>
     <script src="js/tambah.js"></script>
 </body>

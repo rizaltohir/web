@@ -8,39 +8,52 @@
 </head>
 <body>
     <div class="container">
-        <!-- Tautan kembali akan kita buat dinamis nanti -->
-        <a id="back-link" href="#">&larr; Kembali ke Detail Proyek</a>
+        <p><a id="back-link" href="index.html">&larr; Kembali ke Detail Proyek</a></p>
         <h1>Edit Proyek</h1>
-        <p>Ubah detail proyek Anda melalui formulir di bawah ini.</p>
+        <p>Perbarui detail proyek komunitas Anda di bawah ini.</p>
 
-        <!-- Formulir untuk mengedit proyek -->
         <form id="form-edit-proyek">
             <div class="form-group">
                 <label for="title">Nama Proyek</label>
                 <input type="text" id="title" name="title" required>
             </div>
-
             <div class="form-group">
                 <label for="description">Deskripsi Lengkap</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
             </div>
 
+            <hr>
+            <h3>Detail Lokasi</h3>
             <div class="form-group">
-                <label for="location">Lokasi</label>
+                <label for="location">Alamat atau Nama Lokasi (Contoh: Tugu Yogyakarta)</label>
                 <input type="text" id="location" name="location" required>
             </div>
+            <button type="button" id="geocode-button" class="button-secondary">Cari Ulang Koordinat</button>
+            <div id="geocode-status" style="margin-top: 10px; font-style: italic;"></div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" id="latitude" name="latitude" readonly required>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" id="longitude" name="longitude" readonly required>
+                </div>
+            </div>
+            <hr>
 
             <div class="form-group">
-                <label for="goal_amount">Target Donasi</label>
+                <label for="goal_amount">Target Donasi (jika ada, isi dengan angka saja)</label>
                 <input type="number" id="goal_amount" name="goal_amount" placeholder="Contoh: 5000000">
             </div>
-
             <button type="submit" class="button-primary">Simpan Perubahan</button>
         </form>
         
         <div id="message-container" style="margin-top: 20px;"></div>
     </div>
 
+    <script src="js/auth.js"></script>
     <script src="js/edit.js"></script>
 </body>
 </html>
