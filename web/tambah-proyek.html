@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Proyek Baru - SatuBumi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p><a href="index.html">&larr; Kembali ke Halaman Utama</a></p>
+        <h1>Tambah Proyek Baru</h1>
+        <p>Isi formulir di bawah ini untuk mendaftarkan proyek komunitas Anda.</p>
+
+        <form id="form-tambah-proyek">
+            <div class="form-group">
+                <label for="title">Nama Proyek</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Deskripsi Lengkap</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Lokasi (Contoh: Sleman, Yogyakarta)</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="goal_amount">Target Donasi (jika ada, isi dengan angka saja)</label>
+                <input type="number" id="goal_amount" name="goal_amount" placeholder="Contoh: 5000000">
+            </div>
+            <button type="submit" class="button-primary">Simpan Proyek</button>
+        </form>
+        
+        <div id="message-container" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- PENTING: auth.js harus dimuat SEBELUM tambah.js -->
+    <script src="js/auth.js"></script>
+    <script src="js/tambah.js"></script>
+</body>
+</html>

@@ -42,3 +42,74 @@ a {
 a:hover {
     text-decoration: underline; /* Memunculkan garis bawah saat mouse di atasnya */
 }
+
+/* Styling untuk Kartu Proyek */
+.project-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: #2c5e32;
+}
+
+.project-card .location {
+    font-style: italic;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Gaya untuk Formulir */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+}
+
+/* Gaya untuk Tombol Utama */
+.button-primary {
+    background-color: #2c5e32; /* Hijau tua */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+}
+.button-primary:hover {
+    background-color: #4a7c59;
+}
+
+/* Gaya untuk Tombol Berbahaya (Hapus) */
+.button-danger {
+    background-color: #d9534f; /* Merah */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+}
+.button-danger:hover {
+    background-color: #c9302c;
+}
