@@ -21,6 +21,8 @@ class Project extends Model
         'status', // Pastikan status juga ada di sini jika Anda menggunakannya
         'goal_amount',
         'user_id', // <-- PENTING
+        'latitude',   // <-- Tambahkan ini
+        'longitude',  // <-- Tambahkan ini
     ];
 
     /**
@@ -31,4 +33,5 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 }
