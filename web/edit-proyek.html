@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Proyek - SatuBumi</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,19 +21,73 @@
                 <label for="title">Nama Proyek</label>
                 <input type="text" id="title" name="title" required>
             </div>
+
+            <div class="form-group">
+                <label for="category">Kategori Proyek</label>
+                <select id="category" name="category" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="environment">Lingkungan</option>
+                    <option value="social">Sosial</option>
+                    <option value="education">Pendidikan</option>
+                    <option value="health">Kesehatan</option>
+                    <option value="culture">Budaya</option>
+                    <option value="technology">Teknologi</option>
+                    <option value="other">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tag Proyek</label>
+                <div class="tags-input-container">
+                    <input type="text" id="tags-input" placeholder="Ketik tag dan tekan Enter">
+                    <div id="tags-container" class="tags-container"></div>
+                    <input type="hidden" id="tags" name="tags">
+                </div>
+                <small class="help-text">Contoh: lingkungan, edukasi, komunitas (pisahkan dengan Enter)</small>
+            </div>
+
             <div class="form-group">
                 <label for="description">Deskripsi Lengkap</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="status">Status Proyek</label>
+                <select id="status" name="status" required>
+                    <option value="preparation">Persiapan</option>
+                    <option value="ongoing">Sedang Berjalan</option>
+                    <option value="completed">Selesai</option>
+                </select>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="start_date">Tanggal Mulai</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">Perkiraan Selesai</label>
+                    <input type="date" id="end_date" name="end_date" required>
+                </div>
+            </div>
+
             <hr>
             <h3>Detail Lokasi</h3>
             <div class="form-group">
-                <label for="location">Alamat atau Nama Lokasi (Contoh: Tugu Yogyakarta)</label>
+                <label for="search-location">Cari Lokasi</label>
+                <div class="search-container">
+                    <input type="text" id="search-location" placeholder="Masukkan nama lokasi...">
+                    <button type="button" id="search-button" class="button-secondary">Cari</button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <p>Klik pada peta untuk memperbarui lokasi proyek Anda</p>
+            <div id="map" style="height: 400px; margin-bottom: 20px;"></div>
+            
+            <div class="form-group">
+                <label for="location">Alamat atau Nama Lokasi</label>
                 <input type="text" id="location" name="location" required>
             </div>
-            <button type="button" id="geocode-button" class="button-secondary">Cari Ulang Koordinat</button>
-            <div id="geocode-status" style="margin-top: 10px; font-style: italic;"></div>
 
             <div class="form-group-inline">
                 <div class="form-group">

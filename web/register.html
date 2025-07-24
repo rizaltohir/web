@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun - SatuBumi</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>
     <div class="container">
@@ -14,20 +15,30 @@
         <form id="form-register">
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required minlength="3" title="Nama minimal 3 karakter">
+                <small class="error-text" id="name-error"></small>
             </div>
 
             <div class="form-group">
                 <label for="email">Alamat Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Masukkan alamat email yang valid">
+                <small class="error-text" id="email-error"></small>
             </div>
 
             <div class="form-group">
-                <label for="password">Password (minimal 8 karakter)</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="8" title="Password minimal 8 karakter">
+                <small class="help-text">Password minimal 8 karakter, gunakan kombinasi huruf dan angka</small>
+                <small class="error-text" id="password-error"></small>
             </div>
 
-            <button type="submit" class="button-primary">Daftar</button>
+            <div class="form-group">
+                <label for="password_confirmation">Konfirmasi Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required minlength="8">
+                <small class="error-text" id="password-confirmation-error"></small>
+            </div>
+
+            <button type="submit" class="button-primary" id="submit-button">Daftar</button>
         </form>
         
         <div id="message-container" style="margin-top: 20px;"></div>

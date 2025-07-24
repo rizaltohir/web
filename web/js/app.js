@@ -50,14 +50,46 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cek jika elemen peta ada sebelum membuat peta
         if (!mapContainer) return null;
 
-        // Tentukan koordinat tengah (misal: Tugu Yogyakarta) dan level zoom
-        const map = L.map('map').setView([-7.78278, 110.36722], 11); // Zoom sedikit diperlebar
+        // Inisialisasi peta dengan opsi kontrol
+        const map = L.map('map', {
+            center: [-2.548926, 118.014863], // Posisi default di tengah Indonesia
+            zoom: 5,
+            zoomControl: false, // Nonaktifkan kontrol zoom default
+            minZoom: 4, // Batasi zoom minimum
+            maxZoom: 18 // Batasi zoom maximum
+        });
 
         // Tambahkan 'tile layer' (gambar peta dasar) dari OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        } ).addTo(map);
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Tambahkan kontrol zoom kustom
+        L.control.zoom({
+            position: 'bottomright',
+            zoomInText: '+',
+            zoomOutText: '-',
+            zoomInTitle: 'Perbesar',
+            zoomOutTitle: 'Perkecil'
+        }).addTo(map);
+
+        // Tambahkan skala peta
+        L.control.scale({
+            position: 'bottomleft',
+            imperial: false, // Hanya tampilkan skala metrik
+            maxWidth: 200
+        }).addTo(map);
+
+        // Tambahkan tombol lokasi saat ini
+        L.control.locate({
+            position: 'bottomright',
+            strings: {
+                title: 'Tunjukkan lokasi saya'
+            },
+            locateOptions: {
+                enableHighAccuracy: true
+            }
+        }).addTo(map);
 
         return map; // Kembalikan objek peta agar bisa digunakan nanti
     }
@@ -77,15 +109,51 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
 
+                // Konversi status dan kategori ke bahasa Indonesia
+                const statusMap = {
+                    'preparation': 'Persiapan',
+                    'ongoing': 'Sedang Berjalan',
+                    'completed': 'Selesai'
+                };
+
+                const categoryMap = {
+                    'environment': 'Lingkungan',
+                    'social': 'Sosial',
+                    'education': 'Pendidikan',
+                    'health': 'Kesehatan',
+                    'culture': 'Budaya',
+                    'technology': 'Teknologi',
+                    'other': 'Lainnya'
+                };
+
                 projects.forEach(project => {
+                    // Format tanggal
+                    const startDate = project.start_date ? new Date(project.start_date).toLocaleDateString('id-ID') : 'Belum ditentukan';
+                    
+                    // Generate tags HTML
+                    const tagsHtml = Array.isArray(project.tags) && project.tags.length > 0
+                        ? `<div class="project-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                           </div>`
+                        : '';
+
                     // Bagian A: Tampilkan proyek di daftar di bawah peta
                     const projectCard = document.createElement('div');
                     projectCard.className = 'project-card';
                     projectCard.innerHTML = `
                         <h3><a href="detail-proyek.html?id=${project.id}">${project.title}</a></h3>
+                        <div class="project-meta">
+                            <span class="category-badge">${categoryMap[project.category] || 'Kategori tidak diset'}</span>
+                            <span class="status-badge status-${project.status}">${statusMap[project.status] || 'Status tidak diset'}</span>
+                        </div>
+                        ${tagsHtml}
                         <p class="location">${project.location}</p>
-                        <p>${project.description}</p>
-                        <p><strong>Status:</strong> ${project.status}</p>
+                        <p class="description">${project.description.length > 200 ? 
+                            project.description.substring(0, 200) + '...' : 
+                            project.description}</p>
+                        <div class="project-card-footer">
+                            <span>Mulai: ${startDate}</span>
+                        </div>
                     `;
                     projectListContainer.appendChild(projectCard);
 
