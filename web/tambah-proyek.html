@@ -4,20 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Proyek Baru - SatuBumi</title>
+    <link rel="icon" type="image/png" href="images/bumi.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tags.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+        crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <p><a href="index.html">&larr; Kembali ke Halaman Utama</a></p>
-        <h1>Tambah Proyek Baru</h1>
-        <p>Isi formulir di bawah ini untuk mendaftarkan proyek komunitas Anda.</p>
+    <header class="site-header">
+        <nav class="top-nav">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <img src="images/bumi.png" alt="SatuBumi Logo" class="nav-logo">
+                    <span>SatuBumi</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Beranda</span>
+                    </a>
+                    <a href="#" id="userProfileLink" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                    <button id="logoutBtn" class="nav-button">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-        <form id="form-tambah-proyek">
+        <div class="hero-banner">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i></a>
+                    <span class="separator">/</span>
+                    <span>Tambah Proyek Baru</span>
+                </div>
+                <h1 class="hero-title">Tambah Proyek Baru</h1>
+                <p class="hero-subtitle">Buat proyek baru dan mulai berkontribusi untuk keberlanjutan lokal</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="content-card">
+            <div class="card-header">
+                <h1><i class="fas fa-plus-circle"></i> Tambah Proyek Baru</h1>
+                <p class="subtitle">Isi formulir di bawah ini untuk mendaftarkan proyek komunitas Anda.</p>
+            </div>
+
+            <form id="form-tambah-proyek" class="form-container">
             <div class="form-group">
                 <label for="title">Nama Proyek</label>
                 <input type="text" id="title" name="title" required>
@@ -37,19 +82,19 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="tags">Tag Proyek</label>
-                <div class="tags-input-container">
-                    <input type="text" id="tags-input" placeholder="Ketik tag dan tekan Enter">
-                    <div id="tags-container" class="tags-container"></div>
-                    <input type="hidden" id="tags" name="tags">
-                </div>
-                <small class="help-text">Contoh: lingkungan, edukasi, komunitas (pisahkan dengan Enter)</small>
-            </div>
+
 
             <div class="form-group">
                 <label for="description">Deskripsi Lengkap</label>
-                <textarea id="description" name="description" rows="5" required></textarea>
+                <textarea id="description" 
+                    name="description" 
+                    rows="5" 
+                    required
+                    minlength="50"
+                    maxlength="2000"
+                    placeholder="Jelaskan secara detail tentang proyek Anda (minimal 50 karakter)"
+                ></textarea>
+                <small class="char-count" id="description-count">0/2000 karakter</small>
             </div>
 
             <div class="form-group">
@@ -63,27 +108,72 @@
 
             <div class="form-group-inline">
                 <div class="form-group">
-                    <label for="start_date">Tanggal Mulai</label>
+                    <label for="start_date">
+                        <i class="fas fa-calendar-alt"></i>
+                        Tanggal Mulai
+                    </label>
                     <input type="date" id="start_date" name="start_date" required>
                 </div>
                 <div class="form-group">
-                    <label for="end_date">Perkiraan Selesai</label>
+                    <label for="end_date">
+                        <i class="fas fa-calendar-check"></i>
+                        Perkiraan Selesai
+                    </label>
                     <input type="date" id="end_date" name="end_date" required>
+                </div>
+            </div>
+
+            <hr>
+            <h3><i class="fas fa-hand-holding-heart"></i> Target Donasi</h3>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="target_amount">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Target Dana
+                    </label>
+                    <div class="input-group">
+                        <span class="input-prefix">Rp</span>
+                        <input type="number" id="target_amount" name="target_amount" required min="0" step="1000" placeholder="0">
+                    </div>
+                    <small class="help-text">Masukkan target dana yang dibutuhkan untuk proyek ini</small>
+                </div>
+                <div class="form-group">
+                    <label for="donation_end_date">
+                        <i class="fas fa-clock"></i>
+                        Batas Waktu Donasi
+                    </label>
+                    <input type="date" id="donation_end_date" name="donation_end_date" required>
+                    <small class="help-text">Tanggal berakhirnya periode penggalangan dana</small>
                 </div>
             </div>
             
             <hr>
-            <h3>Detail Lokasi</h3>
-            <div class="form-group">
-                <label for="search-location">Cari Lokasi</label>
+            <h3><i class="fas fa-map-marker-alt"></i> Detail Lokasi</h3>
+            <div class="form-group map-search-section">
+                <label for="search-location">
+                    <i class="fas fa-search"></i>
+                    Cari Lokasi
+                </label>
                 <div class="search-container">
-                    <input type="text" id="search-location" placeholder="Masukkan nama lokasi...">
-                    <button type="button" id="search-button" class="button-secondary">Cari</button>
+                    <input type="text" 
+                           id="search-location" 
+                           placeholder="Masukkan nama lokasi..."
+                           autocomplete="off">
+                    <button type="button" id="search-button" class="button-secondary">
+                        <i class="fas fa-search"></i>
+                        Cari
+                    </button>
+                    <div id="search-results" class="search-results"></div>
                 </div>
-                <div id="search-results" class="search-results"></div>
             </div>
-            <p>Klik pada peta untuk memilih lokasi proyek Anda</p>
-            <div id="map" style="height: 400px; margin-bottom: 20px;"></div>
+            
+            <div class="map-section">
+                <p class="map-instruction">
+                    <i class="fas fa-info-circle"></i>
+                    Klik pada peta untuk memilih lokasi proyek Anda
+                </p>
+                <div id="map" class="map-container"></div>
+            </div>
             
             <div class="form-group">
                 <label for="location">Alamat atau Nama Lokasi</label>

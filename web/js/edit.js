@@ -58,11 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const latitudeInput = document.getElementById('latitude');
     const longitudeInput = document.getElementById('longitude');
     
-    // Tags handling
-    const tagsInput = document.getElementById('tags-input');
-    const tagsContainer = document.getElementById('tags-container');
-    const tagsHiddenInput = document.getElementById('tags');
-    let tags = [];
+    // Map initialization
     const searchInput = document.getElementById('search-location');
     const searchButton = document.getElementById('search-button');
     const searchResults = document.getElementById('search-results');

@@ -4,45 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun - SatuBumi</title>
+    <link rel="icon" type="image/png" href="images/bumi.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/auth.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Daftar Akun Baru</h1>
-        <p>Sudah punya akun? <a href="login.html">Masuk di sini</a>.</p>
+<body class="auth-page">
+    <nav class="top-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="nav-logo">
+                <span>SatuBumi</span>
+            </a>
+        </div>
+    </nav>
 
-        <form id="form-register">
-            <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" required minlength="3" title="Nama minimal 3 karakter">
-                <small class="error-text" id="name-error"></small>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="auth-logo">
+                <h1>Bergabung dengan SatuBumi</h1>
+                <p class="auth-subtitle">Buat akun untuk mulai berkontribusi</p>
             </div>
 
-            <div class="form-group">
-                <label for="email">Alamat Email</label>
-                <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Masukkan alamat email yang valid">
-                <small class="error-text" id="email-error"></small>
-            </div>
+            <form id="form-register" class="auth-form">
+                <div class="form-group">
+                    <label for="name">
+                        <i class="fas fa-user"></i>
+                        Nama Lengkap
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        minlength="3" 
+                        title="Nama minimal 3 karakter"
+                        placeholder="Masukkan nama lengkap Anda"
+                    >
+                    <small class="error-text" id="name-error"></small>
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required minlength="8" title="Password minimal 8 karakter">
-                <small class="help-text">Password minimal 8 karakter, gunakan kombinasi huruf dan angka</small>
-                <small class="error-text" id="password-error"></small>
-            </div>
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        Alamat Email
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                        title="Masukkan alamat email yang valid"
+                        placeholder="contoh@email.com"
+                    >
+                    <small class="error-text" id="email-error"></small>
+                </div>
 
-            <div class="form-group">
-                <label for="password_confirmation">Konfirmasi Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required minlength="8">
-                <small class="error-text" id="password-confirmation-error"></small>
-            </div>
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            minlength="8" 
+                            title="Password minimal 8 karakter"
+                            placeholder="Buat password Anda"
+                        >
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <small class="help-text">Password minimal 8 karakter, gunakan kombinasi huruf dan angka</small>
+                    <small class="error-text" id="password-error"></small>
+                </div>
 
-            <button type="submit" class="button-primary" id="submit-button">Daftar</button>
-        </form>
-        
-        <div id="message-container" style="margin-top: 20px;"></div>
+                <div class="form-group">
+                    <label for="password_confirmation">
+                        <i class="fas fa-lock"></i>
+                        Konfirmasi Password
+                    </label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password_confirmation" 
+                            name="password_confirmation" 
+                            required 
+                            minlength="8"
+                            placeholder="Masukkan ulang password Anda"
+                        >
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <small class="error-text" id="password-confirmation-error"></small>
+                </div>
+
+                <button type="submit" class="button-primary" id="submit-button">
+                    <i class="fas fa-user-plus"></i>
+                    Daftar Sekarang
+                </button>
+            </form>
+
+            <div id="message-container" class="message-container"></div>
+
+            <div class="auth-footer">
+                <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+            </div>
+        </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="footer-logo">
+                <p>&copy; 2025 SatuBumi. Semua hak dilindungi.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>Tim Pengembang</h3>
+                    <p>
+                        <a href="https://www.instagram.com/rizal_ahmdthr/"><i class="fab fa-instagram"></i> Rizal Achmad Thohir</a><br>
+                        <a href="https://www.instagram.com/devandanendraa/"><i class="fab fa-instagram"></i> Devano Danendra Sharen</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan</h3>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat dan Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/register.js"></script>
 </body>

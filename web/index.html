@@ -3,49 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SatuBumi - Halaman Awal</title>
+    <meta name="description" content="SatuBumi - Platform inovatif untuk mendukung keberlanjutan lokal dan pelestarian lingkungan. Bergabunglah dalam gerakan pelestarian alam Indonesia.">
+    <meta name="keywords" content="keberlanjutan, lingkungan, proyek hijau, pelestarian alam, komunitas hijau, eco-friendly, sustainable development, Indonesia">
+    <meta name="author" content="Tim SatuBumi">
+    <meta name="theme-color" content="#2c5e32">
+    <meta property="og:title" content="SatuBumi - Platform Keberlanjutan Lokal">
+    <meta property="og:description" content="Bergabung dalam gerakan pelestarian alam Indonesia melalui platform kolaborasi komunitas SatuBumi">
+    <meta property="og:image" content="images/bumi.png">
+    <meta property="og:type" content="website">
     
-    <!-- CSS Leaflet (PENTING) -->
+    <title>SatuBumi - Platform Keberlanjutan Lokal | Bersama Melestarikan Alam Indonesia</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/bumi.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/bumi.png">
+    
+    <!-- Preconnect to CDNs -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Third Party CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-          
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/bumi.png" as="image">
+    <link rel="preload" href="js/navbarComponents.js" as="script">
 </head>
 <body>
+    <nav class="top-nav">
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="images/bumi.png" alt="SatuBumi Logo" class="nav-logo">
+                    <span>SatuBumi</span>
+                </a>
+                <div class="dropdown-container">
+                    <button class="dropdown-button" id="more-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                        <span>Lainnya</span>
+                    </button>
+                    <div class="dropdown-content" id="more-menu-content">
+                        <a href="#bantuan"><i class="fas fa-question-circle"></i> Bantuan</a>
+                        <a href="#tentang"><i class="fas fa-info-circle"></i> Tentang Kami</a>
+                        <a href="#kontak"><i class="fas fa-envelope"></i> Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-center">
+                <div class="nav-links" id="navigation-bar">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Beranda</span>
+                    </a>
+                    <a href="#projects" class="nav-link">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Proyek</span>
+                    </a>
+                    <a href="#community" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Komunitas</span>
+                    </a>
+                    <a href="#impact" class="nav-link">
+                        <i class="fas fa-leaf"></i>
+                        <span>Dampak</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" title="Ubah tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="notification-bell" id="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">0</span>
+                    </div>
+                    <div class="user-menu" id="user-menu">
+                        <!-- User menu akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <div class="animated-circles">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <h1 class="hero-title">
+                    <span class="welcome-text">Selamat Datang di</span>
+                    <span class="brand-text">SatuBumi</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="subtitle-line">Platform Kolaborasi Komunitas</span>
+                    <span class="subtitle-line">untuk Keberlanjutan Lokal</span>
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="cta-button primary">
+                        <i class="fas fa-seedling"></i>
+                        Jelajahi Proyek
+                    </a>
+                    <a href="#about" class="cta-button secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Proyek Aktif</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Kontributor</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Kota</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
-        <div id="navigation-bar" style="text-align: right; margin-bottom: 20px;">
-            <!-- Konten navigasi akan diisi oleh JavaScript -->
-        </div>
+        <section class="map-section">
+            <h2><i class="fas fa-map-marked-alt"></i> Peta Proyek Komunitas</h2>
+            <div id="map" class="map-container"></div>
+        </section>
 
-        <img src="images/bumi.png" alt="Logo Proyek SatuBumi" width="150">
+        <section class="projects-section">
+            <div class="section-header">
+                <h2><i class="fas fa-project-diagram"></i> Proyek Terbaru</h2>
+                <div id="add-project-button-container"></div>
+            </div>
+            
+            <div id="project-list" class="projects-grid">
+                <div class="loading-spinner">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <p>Memuat proyek...</p>
+                </div>
+            </div>
+        </section>
 
-        <h1>Selamat Datang di Proyek SatuBumi!</h1>
-        <p>Platform Kolaborasi Komunitas untuk Keberlanjutan Lokal.</p>
-        
-        <!-- Wadah untuk Peta Dinamis -->
-        <h2>Peta Proyek Komunitas</h2>
-        <div id="map" style="height: 400px; margin-bottom: 30px; border-radius: 8px;"></div>
-
-        <div id="add-project-button-container"></div>
-
-        <h2>Daftar Proyek Terbaru</h2>
-        <div id="project-list">
-            <p>Memuat proyek...</p> 
-        </div>
-
-        <p>
-            Baca berita terbaru tentang lingkungan di 
-            <a href="https://www.mongabay.co.id/" target="_blank">Mongabay Indonesia</a>.
-        </p>
-
-        <h3>Tim Pengembang</h3>
-        <p>
-            <a href="https://github.com/rizaltohir">Rizal Achmad Thohir</a> & Devano Danendra Sharen
-        </p>
+        <section class="news-section">
+            <h2><i class="fas fa-newspaper"></i> Berita & Informasi</h2>
+            <div class="news-card">
+                <p>
+                    Ikuti berita terbaru tentang lingkungan di 
+                    <a href="https://www.mongabay.co.id/" target="_blank" class="news-link">
+                        <i class="fas fa-external-link-alt"></i> Mongabay Indonesia
+                    </a>
+                </p>
+            </div>
+        </section>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="footer-logo">
+                <p>&copy; 2025 SatuBumi. Semua hak dilindungi.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>Tim Pengembang</h3>
+                    <p>
+                        <a href="https://www.instagram.com/rizal_ahmdthr/"><i class="fab fa-instagram"></i> Rizal Achmad Thohir</a><br>
+                        <a href="https://www.instagram.com/devandanendraa_/"><i class="fab fa-instagram"></i> Devano Danendra Sharen</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan</h3>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat dan Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScript Leaflet (PENTING ) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -54,6 +216,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
             
     <script src="js/auth.js"></script>
+    <script src="js/navbarComponents.js"></script>
     <script src="js/app.js"></script>
 
 </body>

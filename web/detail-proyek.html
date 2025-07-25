@@ -4,18 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Proyek - SatuBumi</title>
+    <link rel="icon" type="image/png" href="images/bumi.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+        crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <nav class="top-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="nav-logo">
+                <span>SatuBumi</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="#" id="userProfileLink">Profil</a>
+                <button id="logoutBtn" class="nav-button">Keluar</button>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <p><a href="index.html">&larr; Kembali ke Daftar Proyek</a></p>
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="separator">/</span>
+            <span>Detail Proyek</span>
+        </div>
         
-        <div id="project-detail-container">
-            <p>Memuat detail proyek...</p>
+        <div id="project-detail-container" class="detail-card">
+            <div class="loading-spinner">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <p>Memuat detail proyek...</p>
+            </div>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <img src="images/bumi.png" alt="SatuBumi Logo" class="footer-logo">
+                <p>&copy; 2025 SatuBumi. Semua hak dilindungi.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>Tim Pengembang</h3>
+                    <p>
+                        <a href="https://www.instagram.com/rizal_ahmdthr/"><i class="fab fa-instagram"></i> Rizal Achmad Thohir</a><br>
+                        <a href="https://www.instagram.com/devandanendraa/"><i class="fab fa-instagram"></i> Devano Danendra Sharen</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan</h3>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat dan Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- PENTING: auth.js harus dimuat SEBELUM detail.js -->
     <script src="js/auth.js"></script>
