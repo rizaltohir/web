@@ -1,6 +1,4 @@
-g. Alamat Domain Proyek dan Cara Akses/Pemasangan
-Karena proyek rizaltohir/web adalah sebuah repositori GitHub yang berisi kode sumber, tidak ada alamat domain publik yang langsung terkait dengannya kecuali jika proyek ini di-deploy ke server web. Namun, untuk tujuan demonstrasi dan pengujian, proyek ini dapat diakses dan dipasang secara lokal dengan mengikuti langkah-langkah berikut:
-Asumsi Lingkungan Pengembangan Lokal:
+Lingkungan Pengembangan Lokal:
 •	Sistem Operasi: Linux (Ubuntu/Debian), macOS, atau Windows (dengan WSL/Laragon/XAMPP/WAMP).
 •	PHP: Versi 8.2 atau lebih tinggi (sesuai composer.json).
 •	Composer: Terinstal.
